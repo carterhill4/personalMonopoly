@@ -9,6 +9,8 @@ static BoardSpace[] board = new BoardSpace[40];
 		
 		public static void main(String[] args) throws FileNotFoundException
 			{
+				
+				//attempt at multtiple themes
 //				Scanner tanner = new Scanner(System.in);
 //				System.out.println("What theme would you like?");
 //				int choice = tanner.nextInt();
