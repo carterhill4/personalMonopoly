@@ -1,5 +1,5 @@
 
-public class Dice
+public class DiceRoller
 	{
 static boolean doubles;
 		
