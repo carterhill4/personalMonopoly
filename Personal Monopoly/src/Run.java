@@ -12,11 +12,21 @@ static Scanner z;
 
 		public static void main(String[] args) throws IOException
 			{
-				
+				//greeting();
+//				for(BoardSpace b : board)
+//					{
+//						System.out.println(b.getType());
+//					}
+//				
 			selectVersion();
 			
 			}	
-		
+		public static void greeting()
+		{
+			System.out.println("Hello, welcome to the world of Monopoly!");
+			System.out.println("What is player one's name?");
+			System.out.println("What is player two's name?");
+		}
 		public static void selectVersion() throws IOException
 		{
 				
@@ -28,12 +38,12 @@ static Scanner z;
 				
 				if(choice == 1)
 					{
-						file = new Scanner(new File("AmericanMonopoly2.txt"));
+						file = new Scanner(new File("AmericanMonopoly.txt"));
 						americanBoard(b);
 					}
 				else
 					{
-						file = new Scanner(new File("FortniteMonopoly2.txt"));
+						file = new Scanner(new File("FortniteMonopoly.txt"));
 						fortniteBoard(b);
 					}
 					
@@ -58,7 +68,8 @@ static Scanner z;
 			     
 			      for( int i = 0; i < numberOfLines; i++ )
 			          {
-			        	   String type = b.nextLine();
+			        	   String type = b.next();
+			        	   System.out.println(type);
 			        	  /*the txt file will be structured as follows:
 			        	   * the first line will be an int that represents the amount of lines that follow it (think A+)
 			        	   *each line will be one square
@@ -67,7 +78,7 @@ static Scanner z;
 			        	  */
 			        	  if(type.equals("Property"))
 			        		  {
-			        			  
+			        			  		
 			        					  String n = b.next(); 
 			        					  String o = b.next(); 
 			        					  int c = b.nextInt(); 
@@ -98,7 +109,7 @@ static Scanner z;
 			        			  board[i] = new Railroads("Railroad", rn, ro, rc, r1, rr1, rr2, rr3, rr4);
 			        		  }
 			        	  
-			        	  else if(file.next().equals("Utility"))
+			        	  else if(type.equals("Utility"))
 			        		  {
 			        			  
 			        					  String un = b.next();

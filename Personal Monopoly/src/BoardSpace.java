@@ -7,8 +7,8 @@ public class BoardSpace
 		private int cost;
 		private int location;
 		
-		public BoardSpace()
-		{}
+//		public BoardSpace()
+//		{}
 		
 		public BoardSpace(String t , String n, int c, String o, int l)
 		{
