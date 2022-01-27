@@ -310,7 +310,7 @@ public class Player
 											} else
 											{
 												System.out.println(
-														"You bought the Fortnite battle pass ofr $10.");
+														"You bought the Fortnite battle pass for $10.");
 												playerMoney = playerMoney - 10;
 											}
 								}
