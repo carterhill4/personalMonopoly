@@ -3,23 +3,31 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.io.IOException;
 
-public class Run
+public class MonopRun
 	{
 static BoardSpace[] board = new BoardSpace[40];
 static Scanner file;		
 static Scanner b;
 static Scanner z;
 
-		public static void main(String[] args) throws IOException
+		public static void main(String[] args) throws ClassNotFoundException
 			{
 				//greeting();
 //				for(BoardSpace b : board)
 //					{
 //						System.out.println(b.getType());
 //					}
-//				
-			selectVersion();
-			
+//			
+//				try
+//					{
+//				americanBoard(b);
+//					}
+//				catch(java.lang.ClassNotFoundException exc)
+//					{
+//						System.out.println("Failed");
+//					}
+			//selectVersion();
+			americanBoard(b);	
 			}	
 		public static void greeting()
 		{
@@ -27,7 +35,7 @@ static Scanner z;
 			System.out.println("What is player one's name?");
 			System.out.println("What is player two's name?");
 		}
-		public static void selectVersion() throws IOException
+		public static void selectVersion() throws ClassNotFoundException
 		{
 				
 				Scanner tanner = new Scanner(System.in);
@@ -65,7 +73,7 @@ static Scanner z;
 				
 		
 				int numberOfLines = b.nextInt();
-			     
+			     System.out.println(numberOfLines);
 			      for( int i = 0; i < numberOfLines; i++ )
 			          {
 			        	   String type = b.next();
