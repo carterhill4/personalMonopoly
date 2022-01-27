@@ -12,7 +12,7 @@ static Scanner z;
 
 		public static void main(String[] args) throws IOException
 			{
-			
+			//check failed
 //				for(BoardSpace b : board)
 //					{
 //						System.out.println(b.getType());

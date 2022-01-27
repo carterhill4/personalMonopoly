@@ -214,7 +214,7 @@ public class Player
 							}
 						else if(Run.board[playerLocation].getOwner().equals(playerName))
 							{
-								System.out.println("You already own this railroad");
+								System.out.println("You already own this railroad.");
 							}
 						else
 							{
