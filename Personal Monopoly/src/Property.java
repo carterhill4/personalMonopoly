@@ -1,5 +1,5 @@
 
-public class Properties extends BoardSpace
+public class Property extends BoardSpace
 	{
 		private boolean developing;
 		private int basicRent;
@@ -11,7 +11,7 @@ public class Properties extends BoardSpace
 		private int numberOfHousesOwned;
 		private String color;
 
-		public Properties(String n, int c, String o, int l, boolean d , int br , int hh, int or , int tr , int thr , int hr, int nOH, String co)
+		public Property(String n, int c, String o, int l, boolean d , int br , int hh, int or , int tr , int thr , int hr, int nOH, String co)
 		{
 			setName(n);
 			setCost(c);

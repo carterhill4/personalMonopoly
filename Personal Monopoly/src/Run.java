@@ -12,22 +12,26 @@ static Scanner z;
 
 		public static void main(String[] args) throws IOException
 			{
-				//greeting();
+			
 //				for(BoardSpace b : board)
 //					{
 //						System.out.println(b.getType());
 //					}
-//				
-			selectVersion();
+//			
+//				try
+//					{
+//				americanBoard(b);
+//					}
+//				catch(java.lang.ClassNotFoundException exc)
+//					{
+//						System.out.println("Failed");
+//					}
+			//selectVersion();
+			americanBoard(b);
 			
 			}	
-		public static void greeting()
-		{
-			System.out.println("Hello, welcome to the world of Monopoly!");
-			System.out.println("What is player one's name?");
-			System.out.println("What is player two's name?");
-		}
-		public static void selectVersion() throws IOException
+		
+		public static void selectVersion() throws FileNotFoundException
 		{
 				
 				Scanner tanner = new Scanner(System.in);
@@ -92,7 +96,7 @@ static Scanner z;
 			        					  int hr = b.nextInt();
 			        					  int hn = b.nextInt();
 			        					  String co = b.next();
-			        			  board[i] = new Properties("Property", n, o, c, l, d, r, h, or, tr, thr, hr, hn, co);
+			        			  board[i] = new Property("Property", n, o, c, l, d, r, h, or, tr, thr, hr, hn, co);
 			        		  }
 			        	  
 			        	  else if(type.equals("Railroad"))
@@ -179,7 +183,7 @@ static Scanner z;
 				        					  int hr = z.nextInt();
 				        					  int hn = z.nextInt();
 				        					  String co = z.next();
-				        			  board[i] = new Properties("Property", n, o, c, l, d, r, h, or, tr, thr, hr, hn, co);
+				        			  board[i] = new Property("Property", n, o, c, l, d, r, h, or, tr, thr, hr, hn, co);
 				        		  }
 				        	  
 				        	  else if(type.equals("Gas_Station"))

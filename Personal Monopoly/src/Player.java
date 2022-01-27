@@ -134,7 +134,7 @@ public class Player
 								
 								if(menuInput == 1)
 									{
-										if(((Properties) Run.board[playerLocation]).getNumberOfHousesOwned() >= 4)
+										if(((Property) Run.board[playerLocation]).getNumberOfHousesOwned() >= 4)
 											{
 												System.out.println("Sorry, you have already bought the maximum amount of property on this space.");
 											}
@@ -148,25 +148,25 @@ public class Player
 						else
 							{
 								System.out.println("This property is already owned by" + Run.board[playerLocation].getOwner() + ", you now must pay rent.");
-								if(((Properties) Run.board[playerLocation]).getNumberOfHousesOwned() == 0)
+								if(((Property) Run.board[playerLocation]).getNumberOfHousesOwned() == 0)
 									{
-										playerMoney -= ((Properties) Run.board[playerLocation]).getBasicRent();
+										playerMoney -= ((Property) Run.board[playerLocation]).getBasicRent();
 									}
-								else if(((Properties) Run.board[playerLocation]).getNumberOfHousesOwned() == 1)
+								else if(((Property) Run.board[playerLocation]).getNumberOfHousesOwned() == 1)
 									{
-										playerMoney -= ((Properties) Run.board[playerLocation]).getOneHouseRent();
+										playerMoney -= ((Property) Run.board[playerLocation]).getOneHouseRent();
 									}
-								else if(((Properties) Run.board[playerLocation]).getNumberOfHousesOwned() == 2)
+								else if(((Property) Run.board[playerLocation]).getNumberOfHousesOwned() == 2)
 									{
-										playerMoney -= ((Properties) Run.board[playerLocation]).getTwoHouseRent();
+										playerMoney -= ((Property) Run.board[playerLocation]).getTwoHouseRent();
 									}
-								else if(((Properties) Run.board[playerLocation]).getNumberOfHousesOwned() == 3)
+								else if(((Property) Run.board[playerLocation]).getNumberOfHousesOwned() == 3)
 									{
-										playerMoney -= ((Properties) Run.board[playerLocation]).getThreeHouseRent();
+										playerMoney -= ((Property) Run.board[playerLocation]).getThreeHouseRent();
 									}
-								else if(((Properties) Run.board[playerLocation]).getNumberOfHousesOwned() == 4)
+								else if(((Property) Run.board[playerLocation]).getNumberOfHousesOwned() == 4)
 									{
-										playerMoney -= ((Properties) Run.board[playerLocation]).getHotelRent();
+										playerMoney -= ((Property) Run.board[playerLocation]).getHotelRent();
 									}
 								
 								checkForBankruptcy();
