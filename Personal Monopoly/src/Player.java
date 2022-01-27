@@ -1,4 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.io.IOException;
 
 public class Player
 	{
@@ -69,7 +72,7 @@ public class Player
 					System.out.println("You passsed GO and collected $200");
 				}
 			
-			System.out.println("You rolled: " + playerRoll + "\nYou landed on " + Run.board[playerLocation].getName());
+			System.out.println("You rolled: " + playerRoll + "\nYou landed on " + MonopRun.board[playerLocation].getName());
 			
 			landOnSquare();
 			
@@ -111,116 +114,140 @@ public class Player
 		
 		public static void landOnSquare()
 			{
-				if(Run.board[playerLocation].getType().equals("Property"))
+				if(MonopRun.board[playerLocation].getType().equals("Property"))
 					{
-						if(Run.board[playerLocation].getOwner().equals("none"))
+						if(MonopRun.board[playerLocation].getOwner().equals("none"))
 							{
 							System.out.println("This location is not owned, would you like to buy it?\n1) Yes\n2) No");
 							menuInput = userInput.nextInt();
 							
 							if(menuInput == 1)
 								{
-									Run.board[playerLocation].setOwner(playerName);
-									playerMoney -= Run.board[playerLocation].getCost();
+									MonopRun.board[playerLocation].setOwner(playerName);
+									playerMoney -= MonopRun.board[playerLocation].getCost();
 									checkForBankruptcy();
 									numberOfPropertiesOwned++;
 								}
 							//need to implement the 'developing' feature (where you can only buy houses if you own all of that color)
 							}
-						else if(Run.board[playerLocation].getOwner().equals(playerName))
+						else if(MonopRun.board[playerLocation].getOwner().equals(playerName))
 							{
 								System.out.println("You already own this property...\nWould you like to buy houses or a hotel?\n1) Yes\n2) No");
 								menuInput = userInput.nextInt();
 								
 								if(menuInput == 1)
 									{
-										if(((Property) Run.board[playerLocation]).getNumberOfHousesOwned() >= 4)
+
+										if(((Property) MonopRun.board[playerLocation]).getNumberOfHousesOwned() >= 4)
+
+
+
 											{
 												System.out.println("Sorry, you have already bought the maximum amount of property on this space.");
 											}
 										else
 											{
-											//this is broken and I don't know how to fix it at this time
-											//(Properties) MonopDriver.board[playerLocation]).setNumberOfHousesOwned(((Properties) MonopDriver.board[playerLocation]).getNumberOfHousesOwned()+1);
+											
+											(Properties) MonopDriver.board[playerLocation]).setNumberOfHousesOwned(((Properties) MonopDriver.board[playerLocation]).getNumberOfHousesOwned()+1);
 											}
 									}
 							}
 						else
 							{
-								System.out.println("This property is already owned by" + Run.board[playerLocation].getOwner() + ", you now must pay rent.");
-								if(((Property) Run.board[playerLocation]).getNumberOfHousesOwned() == 0)
+
+								System.out.println("This property is already owned by" + MonopRun.board[playerLocation].getOwner() + ", you now must pay rent.");
+								if(((Property) MonopRun.board[playerLocation]).getNumberOfHousesOwned() == 0)
 									{
-										playerMoney -= ((Property) Run.board[playerLocation]).getBasicRent();
+										playerMoney -= ((Property) MonopRun.board[playerLocation]).getBasicRent();
 									}
-								else if(((Property) Run.board[playerLocation]).getNumberOfHousesOwned() == 1)
+								else if(((Property) MonopRun.board[playerLocation]).getNumberOfHousesOwned() == 1)
 									{
-										playerMoney -= ((Property) Run.board[playerLocation]).getOneHouseRent();
+										playerMoney -= ((Property) MonopRun.board[playerLocation]).getOneHouseRent();
 									}
-								else if(((Property) Run.board[playerLocation]).getNumberOfHousesOwned() == 2)
+								else if(((Property) MonopRun.board[playerLocation]).getNumberOfHousesOwned() == 2)
 									{
-										playerMoney -= ((Property) Run.board[playerLocation]).getTwoHouseRent();
+										playerMoney -= ((Property) MonopRun.board[playerLocation]).getTwoHouseRent();
 									}
-								else if(((Property) Run.board[playerLocation]).getNumberOfHousesOwned() == 3)
+								else if(((Property) MonopRun.board[playerLocation]).getNumberOfHousesOwned() == 3)
 									{
-										playerMoney -= ((Property) Run.board[playerLocation]).getThreeHouseRent();
+										playerMoney -= ((Property) MonopRun.board[playerLocation]).getThreeHouseRent();
 									}
-								else if(((Property) Run.board[playerLocation]).getNumberOfHousesOwned() == 4)
+								else if(((Property) MonopRun.board[playerLocation]).getNumberOfHousesOwned() == 4)
 									{
-										playerMoney -= ((Property) Run.board[playerLocation]).getHotelRent();
+										playerMoney -= ((Property) MonopRun.board[playerLocation]).getHotelRent();
+									}
+								System.out.println("This property is already owned by" + MonopRun.board[playerLocation].getOwner() + ", you now must pay rent.");
+								if(((Properties) MonopRun.board[playerLocation]).getNumberOfHousesOwned() == 0)
+									{
+										playerMoney -= ((Properties) MonopRun.board[playerLocation]).getBasicRent();
+									}
+								else if(((Properties) MonopRun.board[playerLocation]).getNumberOfHousesOwned() == 1)
+									{
+										playerMoney -= ((Properties) MonopRun.board[playerLocation]).getOneHouseRent();
+									}
+								else if(((Properties) MonopRun.board[playerLocation]).getNumberOfHousesOwned() == 2)
+									{
+										playerMoney -= ((Properties) MonopRun.board[playerLocation]).getTwoHouseRent();
+									}
+								else if(((Properties) MonopRun.board[playerLocation]).getNumberOfHousesOwned() == 3)
+									{
+										playerMoney -= ((Properties) MonopRun.board[playerLocation]).getThreeHouseRent();
+									}
+								else if(((Properties) MonopRun.board[playerLocation]).getNumberOfHousesOwned() == 4)
+									{
+										playerMoney -= ((Properties) MonopRun.board[playerLocation]).getHotelRent();
 									}
 								
 								checkForBankruptcy();
+							
 							}
-					}
-				else if(Run.board[playerLocation].getType().equals("Utility"))
+				else if(MonopRun.board[playerLocation].getType().equals("Utility"))
 					{
-						if(Run.board[playerLocation].getOwner().equals("none"))
+						if(MonopRun.board[playerLocation].getOwner().equals("none"))
 							{
 							System.out.println("This location is not owned, would you like to buy it?\n1) Yes\n2) No");
 							menuInput = userInput.nextInt();
 							
 							if(menuInput == 1)
 								{
-									Run.board[playerLocation].setOwner(playerName);
-									playerMoney -= Run.board[playerLocation].getCost();
+									MonopRun.board[playerLocation].setOwner(playerName);
+									playerMoney -= MonopRun.board[playerLocation].getCost();
 									checkForBankruptcy();
 									numberOfUtilitiesOwned++;
 								}
 							}
-						else if(Run.board[playerLocation].getOwner().equals(playerName))
+						else if(MonopRun.board[playerLocation].getOwner().equals(playerName))
 							{
 								System.out.println("You already own this utility");
 							}
 						else
 							{
-								System.out.println("This utility is already owned by " + Run.board[playerLocation].getOwner() + ", you now must pay for the service.");
+								System.out.println("This utility is already owned by " + MonopRun.board[playerLocation].getOwner() + ", you now must pay for the service.");
 								//need to figure out how to search the array for everything that has one specific field
 							}
 					}
-				else if(Run.board[playerLocation].getType().equals("Railroad"))
+				else if(MonopRun.board[playerLocation].getType().equals("Railroad"))
 					{
-						if(Run.board[playerLocation].getOwner().equals("none"))
+						if(MonopRun.board[playerLocation].getOwner().equals("none"))
 							{
 							System.out.println("This location is not owned, would you like to buy it?\n1) Yes\n2) No");
 							menuInput = userInput.nextInt();
 							
 							if(menuInput == 1)
 								{
-									Run.board[playerLocation].setOwner(playerName);
-									playerMoney -= Run.board[playerLocation].getCost();
+									MonopRun.board[playerLocation].setOwner(playerName);
+									playerMoney -= MonopRun.board[playerLocation].getCost();
 									checkForBankruptcy();
 									numberOfRailroadsOwned++;
 								}
 							}
-						else if(Run.board[playerLocation].getOwner().equals(playerName))
+						else if(MonopRun.board[playerLocation].getOwner().equals(playerName))
 							{
 								System.out.println("You already own this railroad.");
 							}
 						else
 							{
-								//once again need to figure the comment from above out
-								
-								/*System.out.println("This property is already owned by" + MonopDriver.board[playerLocation].getOwner() + ", you now must pay rent.");
+								System.out.println("This property is already owned by" + MonopDriver.board[playerLocation].getOwner() + ", you now must pay rent.");
 								if(((Railroads) MonopDriver.board[playerLocation]).getNumberOfHousesOwned() == 1)
 									{
 										playerMoney -= ((Railroads) MonopDriver.board[playerLocation]).getOneOwnedRent();
@@ -236,43 +263,42 @@ public class Player
 								else if(((Railroads) MonopDriver.board[playerLocation]).getNumberOfHousesOwned() == 4)
 									{
 										playerMoney -= ((Railroads) MonopDriver.board[playerLocation]).getFourOwnedRent();
-									}*/
+									}
 								
 								checkForBankruptcy();
 							}
 					}
 				else
 					{
-						if(Run.board[playerLocation].getName().equals("GO"))
+						if(MonopRun.board[playerLocation].getName().equals("GO"))
 							{
-								playerMoney += Run.board[playerLocation].getCost();
-								System.out.println("You collected $" + Run.board[playerLocation].getCost());
+								playerMoney += MonopRun.board[playerLocation].getCost();
+								System.out.println("You collected $" + MonopRun.board[playerLocation].getCost());
 							}
-						else if(Run.board[playerLocation].getName().equals("Go_To_Jail"))
+						else if(MonopRun.board[playerLocation].getName().equals("Go_To_Jail"))
 							{
 								goToJail();
 							}
-						else if(Run.board[playerLocation].getName().equals("Free_Parking"))
+						else if(MonopRun.board[playerLocation].getName().equals("Free_Parking"))
 							{
 								System.out.println("You won " + freeParkingMoney + "!");
 								playerMoney += freeParkingMoney;
 								freeParkingMoney = 0;
 							}
-						else if(Run.board[playerLocation].getName().equals("Income_Tax") || Run.board[playerLocation].getName().equals("Luxury_Tax"))
+						else if(MonopRun.board[playerLocation].getName().equals("Income_Tax") || MonopRun.board[playerLocation].getName().equals("Luxury_Tax"))
 							{
-								System.out.println("You have been taxed $" + Run.board[playerLocation].getCost());
-								freeParkingMoney += Run.board[playerLocation].getCost();
-								playerMoney -= Run.board[playerLocation].getCost();;
+								System.out.println("You have been taxed $" + MonopRun.board[playerLocation].getCost());
+								freeParkingMoney += MonopRun.board[playerLocation].getCost();
+								playerMoney -= MonopRun.board[playerLocation].getCost();;
 							}
 						else {	
-						if (Run.board[playerLocation].getName().equals("Chance"))
+						if (MonopRun.board[playerLocation].getName().equals("Chance"))
 							{
 								int chanceNumber = (int) (Math.random() * 3) + 1;
 								if (chanceNumber == 1)
 									{
-										System.out.println(
-												"You're wife left you. Give 50% of your money to her.");
-										playerMoney = playerMoney / 2;
+										System.out.println("You're wife left you. Give 50% of your money to her.");
+										playerMoney /= 2;
 									}
 
 								else
@@ -280,25 +306,23 @@ public class Player
 										{
 											System.out.println(
 													"You got your secretary pregnant. Pay $50.");
-											playerMoney = playerMoney - 50;
+											playerMoney -= 50;
 										} else
 										{
 											System.out.println("You found $100 on the street.");
-											playerMoney = playerMoney + 100;
+											playerMoney += 100;
 										}
 							}
 						
 						// community chest
 						else
-							if (Run.board[playerLocation].getName()
-									.equals("Community Chest"))
+							if (MonopRun.board[playerLocation].getName().equals("Community Chest"))
 								{
 									int chestNumber = (int) (Math.random() * 3) + 1;
 									if (chestNumber == 1)
 										{
-											System.out.println(
-													"Your dog needs a surgery. Pay the vet $100.");
-											playerMoney = playerMoney / 2;
+											System.out.println("Your dog needs a surgery. Pay the vet $100.");
+											playerMoney /= 2;
 										}
 
 									else
@@ -306,12 +330,13 @@ public class Player
 											{
 												System.out.println(
 														"You have turned to a life of crime. You mugged a teenage girl for $35.");
-												playerMoney = playerMoney + 35;
-											} else
+												playerMoney += 35;
+											}
+										else
 											{
 												System.out.println(
 														"You bought the Fortnite battle pass for $10.");
-												playerMoney = playerMoney - 10;
+												playerMoney -= 10;
 											}
 								}
 

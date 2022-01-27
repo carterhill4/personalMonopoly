@@ -3,14 +3,14 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.io.IOException;
 
-public class Run
+public class MonopRun
 	{
 static BoardSpace[] board = new BoardSpace[40];
 static Scanner file;		
 static Scanner b;
 static Scanner z;
 
-		public static void main(String[] args) throws IOException
+		public static void main(String[] args) throws ClassNotFoundException
 			{
 			//check failed
 //				for(BoardSpace b : board)
@@ -27,11 +27,23 @@ static Scanner z;
 //						System.out.println("Failed");
 //					}
 			//selectVersion();
+<<<<<<< HEAD:Personal Monopoly/src/Run.java
 			americanBoard(b);
 			
 			}	
 		
 		public static void selectVersion() throws FileNotFoundException
+=======
+			americanBoard(b);	
+			}	
+		public static void greeting()
+		{
+			System.out.println("Hello, welcome to the world of Monopoly!");
+			System.out.println("What is player one's name?");
+			System.out.println("What is player two's name?");
+		}
+		public static void selectVersion() throws ClassNotFoundException
+>>>>>>> d7f5927294a78f5d32548bd2d246ffbf7962814d:Personal Monopoly/src/MonopRun.java
 		{
 				
 				Scanner tanner = new Scanner(System.in);
@@ -69,7 +81,7 @@ static Scanner z;
 				
 		
 				int numberOfLines = b.nextInt();
-			     
+			     System.out.println(numberOfLines);
 			      for( int i = 0; i < numberOfLines; i++ )
 			          {
 			        	   String type = b.next();
